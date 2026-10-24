@@ -47,17 +47,8 @@ function createGrid(squares) {
 
 generateBtn.addEventListener("click", () => {
     let noOfSquares = parseInt(prompt("Enter number of Squares per side (max 100): "));
-    while(noOfSquares > 100) {
-        noOfSquares = parseInt(prompt("Number of Squares limit Exceeded! Please enter less number of Squares: "));
+    while((noOfSquares > 100) || !(Number.isInteger(noOfSquares) || (noOfSquares < 1))) {
+        noOfSquares = parseInt(prompt("Please Enter Valid Number of Squares: "));
     }
     createGrid(noOfSquares);
 });
-
-// let divs = document.querySelectorAll(".pixel");
-
-// divs.forEach(div => div.addEventListener("mouseenter", () => div.style.backgroundColor = "blue"));
-// let noOfSquares = 0;
-
-// let squareDivs = document.querySelectorAll(".square");
-
-// squareDivs.forEach(div => div.addEventListener("mouseenter", () => div.style.backgroundColor = "blue"));
