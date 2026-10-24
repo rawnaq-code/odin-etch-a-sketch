@@ -9,8 +9,27 @@ function randomRGB() {
 
 function addEventListenerToChildDivs() {
     let childDivs = document.querySelectorAll(".pixel");
-    childDivs.forEach(div => div.addEventListener("mouseenter", () => div.style.backgroundColor = randomRGB()));
+
+    childDivs.forEach(div => {
+        div.addEventListener("mouseenter", () => {
+            let opacity = Number(div.dataset.opacity || 0);
+
+            opacity = Math.min(
+                Number((opacity + 0.1).toFixed(1)),
+                1
+            );
+
+            div.dataset.opacity = opacity;
+            div.style.opacity = opacity;
+            div.style.backgroundColor = randomRGB();
+        });
+    });
 }
+
+// function addEventListenerToChildDivs() {
+//     let childDivs = document.querySelectorAll(".pixel");
+//     childDivs.forEach(div => div.addEventListener("mouseenter", () => div.style.backgroundColor = randomRGB()));
+// }
 
 function createDivs() {
     for (let i = 0; i < 16; i++) {
